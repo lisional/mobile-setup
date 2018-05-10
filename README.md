@@ -6,3 +6,4 @@ It contains samples for:
 * common android debug keystore
 * vimrc
 * bashrc and bash_profile
+* a zsh config file
