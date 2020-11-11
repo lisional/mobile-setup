@@ -1,6 +1,9 @@
 " 4 spaces wide tabs
 :set tabstop=4
 
+" Fix backspace
+:set bs=2
+
 " specify indentation as 4 spaces too
 :set shiftwidth=4
 
@@ -33,3 +36,10 @@ match OverLength /\%71v.\+/
 
 " change color of 72 column
 set colorcolumn=72
+
+" push to new line after 72 chars
+set textwidth=72
+
+" Highlight trailing white spaces
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
