@@ -1,5 +1,5 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+#https://github.com/robbyrussell/oh-my-zsh/issues/6835#issuecomment-390216875
+ZSH_DISABLE_COMPFIX=true
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Volumes/Users_Data/Users/alision/.oh-my-zsh
@@ -23,34 +23,37 @@ SPACESHIP_GIT_SHOW=true
 SPACESHIP_GIT_BRANCH_SHOW=true
 SPACESHIP_GIT_STATUS_SHOW=false
 
-PATH=/usr/local/bin:$HOME/.local/bin:$HOME/bin:$PATH
-PATH=$HOME/.fastlane/bin:$PATH
-export PATH
+# ORDER
+SPACESHIP_PROMPT_ORDER=(
+  time     #
+  vi_mode  # these sections will be
+  user     # before prompt char
+  host     #
+  char
+  dir
+  git
+  node
+  ruby
+  xcode
+  swift
+)
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# Issue: https://github.com/denysdovhan/spaceship-prompt/issues/343
+SPACESHIP_DIR_TRUNC_REPO=false
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+export ANDROID_HOME=/Volumes/Users_Data/Users/alision/Library/Android/sdk
+export ANDROID_SDK=$ANDROID_HOME
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
+export PATH=$RUBY_PATH:/usr/local/bin:$HOME/.local/bin:$HOME/bin:$HOME/dev/flutter/bin:$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:~/Library/Python/3.7/bin
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -77,7 +80,8 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -90,13 +94,28 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="vim ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
+
+#Mediacenter
+alias gohome='ssh alision@homecenter'
+
+#Magic mirror
+alias gomirror='ssh pi@raspberrypi'
+
+#PiHole
+alias gopihole='ssh pi@192.168.1.139'
+
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/opt/swagger-codegen@2/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Volumes/Users_Data/Users/alision/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Volumes/Users_Data/Users/alision/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Volumes/Users_Data/Users/alision/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Volumes/Users_Data/Users/alision/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+eval $(thefuck --alias)
